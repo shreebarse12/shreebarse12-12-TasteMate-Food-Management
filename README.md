@@ -1,1 +1,1 @@
-# shreebarse12-12-TasteMate-Food-Management
+# TasteMate-Food-Management
