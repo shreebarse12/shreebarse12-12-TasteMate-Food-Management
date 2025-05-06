@@ -1,0 +1,45 @@
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | Delete{% endblock title %}
+
+{% block content %}
+
+<h1 class='text-center'>welcome to django project</h1>
+<!DOCTYPE html>
+<html lang="en" data-bs-theme='dark'>
+<head>
+    <title>Confirm Delete</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container  mt-5">
+        <div class="card shadow-lg p-4">
+            <h2 class="text-center text-danger">Confirm Delete</h2>
+            <hr>
+            <p>Are you sure you want to delete this tweet?</p>
+            <div class="card mb-3 ">
+                <div class="card-body">
+                    <h5 class="card-title">{{ tweet.text }}</h5>
+                    {% if tweet.photo %}
+                    <img src="{{ tweet.photo.url }}" alt="Tweet Photo" class="img-fluid rounded mb-3">
+                    {% endif %}
+                    <p class="text-muted">{{ tweet.created_at }}</p>
+                </div>
+            </div>
+            <form method="post">
+                {% csrf_token %}
+                <button type="submit" class="btn btn-danger">Yes, Delete</button>
+                <a href="{% url 'tweet_list' %}" class="btn btn-secondary">Cancel</a>
+            </form>
+        </div>
+    </div>
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+
+
+
+
+{% endblock content %}

@@ -1,0 +1,10 @@
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | Home{% endblock title %}
+
+{% block content %}
+
+<h1 class='text-center'>welcome to django project</h1>
+
+<p>you have been logged out<a href="{% url 'login' %}" > login here</a></p>
+{% endblock content %}

@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | Home{% endblock title %}
+
+{% block content %}
+
+<h1 class='text-center'>welcome to django project</h1>
+
+
+<div class="container-fluid min-vh-100 d-flex justify-content-center align-items-center">
+    <div class="card p-4 shadow-lg" style="width: 350px;">
+        <h2 class="text-center mb-4">Login</h2>
+        <form method="POST">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button type="submit" class="btn btn-primary w-100">Login</button>
+        </form>
+        <p>dont have an account?<a href="{% url 'register' %}" > register here</a></p>
+    </div>
+</div>
+
+
+
+{% endblock content %}

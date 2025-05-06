@@ -1,0 +1,38 @@
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | Search{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Search Bar -->
+    {% comment %} <form method="get" action="{% url 'search_tweet' %}" class="d-flex justify-content-center mb-4">
+        <input type="text" name="q" class="form-control w-50" placeholder="Search tweets..." value="{{ query }}">
+        <button class="btn btn-primary ms-2" type="submit">Search</button>
+    </form> {% endcomment %}
+
+    <!-- Display Results -->
+    <h4 class="text-center">Search Results for "{{ query }}"</h4>
+
+    <div class="row mt-4 justify-content-center">
+        {% for tweet in results %}
+            <div class="col-md-6">
+                <div class="card mb-3 bg-secondary text-light">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ tweet.user.username }}</h5>
+                        <p class="card-text">{{ tweet.text }}</p>
+                        {% if tweet.photo %}
+                            <img src="{{ tweet.photo.url }}" class="img-fluid rounded" alt="Tweet Photo">
+                        {% endif %}
+                        <p class="card-text"><small class="text-muted">{{ tweet.created_at }}</small></p>
+                    </div>
+                </div>
+            </div>
+        {% empty %}
+            <div class="text-center">
+                <p>No tweet search yet .</p>
+                <p>Enter tweet which you want to search.</p>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

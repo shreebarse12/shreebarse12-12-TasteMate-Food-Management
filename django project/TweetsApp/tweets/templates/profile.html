@@ -1,0 +1,38 @@
+
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | Home{% endblock title %}
+
+{% block content %}
+
+<h1 class='text-center'>Profile </h1>
+
+<div class="container mt-5">
+        <div class="row justify-content-center">
+            <div class="col-md-6">
+                <div class="card text-center shadow-lg">
+                    <div class="card-body">
+                        <!-- Profile Picture -->
+                        {% if profile.profile_picture %}
+                        <img src="{{ profile.profile_picture.url }}" class="rounded-circle mb-3" alt="Profile Picture" width="150" height="150">
+                        {% else %}
+                        <img src="https://via.placeholder.com/150" class="rounded-circle mb-3" alt="Default Profile Picture">
+                        {% endif %}
+                        
+                        <!-- Username -->
+                        <h3>{{ profile.user.username }}</h3>
+                        
+                        <!-- Email -->
+                        <p class="text-muted">{{ profile.user.email }}</p>
+                        
+                        <!-- Bio -->
+                        <p>{{ profile.bio }}</p>
+                        
+                        <!-- Edit Profile Button -->
+                        <a href="{% url 'edit_profile' %}" class="btn btn-primary mt-2">Edit Profile</a> 
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

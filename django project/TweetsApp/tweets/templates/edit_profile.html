@@ -1,0 +1,26 @@
+
+{% extends "layout.html" %}
+
+{% block title %}My TweetsApp | edit profile{% endblock title %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Edit Profile</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label class="form-label">Profile Picture</label>
+            {% if profile.profile_picture %}
+                <img src="{{ profile.profile_picture.url }}" class="rounded-circle mb-2" style="width: 100px; height: 100px; object-fit: cover;">
+            {% endif %}
+            {{ form.profile_picture }}
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Bio</label>
+            {{ form.bio }}
+        </div>
+        <button type="submit" class="btn btn-primary">Update Profile</button>
+        <a href="{% url 'user_profile' %}" class="btn btn-secondary">Cancel</a>
+    </form>
+</div>
+{% endblock %}
